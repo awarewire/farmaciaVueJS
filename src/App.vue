@@ -73,7 +73,7 @@
       </section>
       <!-- /.content -->
 
-      <section class="content">
+      <section class="content" v-show="isVisibleResultados">
         <div class="container-fluid">
           <div class="row">
             <div class="card card-primary col-md-12">
@@ -139,7 +139,7 @@ export default {
       itemRegion:null,
       itemComuna:null,
       itemFarmacia:null,
-      msg: 'Welcome to Your Vue.js App'
+      isVisibleResultados:false
     }
   },
   mounted() {
@@ -173,6 +173,7 @@ export default {
       axios.get(myUrl)
               .then((response) => {
         this.dataFarmacias = response.data.data;
+        this.isVisibleResultados = true;
         console.log(this.dataFarmacias);
       })
       .catch((e) => {
